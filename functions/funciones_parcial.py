@@ -240,7 +240,7 @@ def crear_nuevo_producto(lista_marcas, lista):
         caracterisiticas = "|!*|".join(new_product["CARACTERISTICAS"])
         new_product["CARACTERISTICAS"] = caracterisiticas
 
-        choose = pedir_texto("Deseea continuar? (s/n):")
+        choose = pedir_texto("Deseea agregar otro producto? (s/n):")
         if choose == "n":
             lista_productos.append(new_product)
             break
