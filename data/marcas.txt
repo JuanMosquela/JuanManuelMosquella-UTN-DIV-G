@@ -1,0 +1,13 @@
+Intel
+AMD
+NVIDIA
+Samsung
+Western Digital
+Seagate
+Kingston
+Corsair
+Crucial
+Micron
+Asus
+Gigabyte
+MSI

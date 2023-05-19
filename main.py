@@ -12,7 +12,7 @@ options = [
     "7 - Guardar json",
     "8 - Leer json",
     "9 - Actualizar precios",
-    "10 - Salir del programa"
+    "10 - Abrir txt"
 ]
 
 lista = []
@@ -83,6 +83,12 @@ while True:
             lista_precios_actualizados = aplicar_aumento(lista)
 
             guardar_archivo(lista_precios_actualizados, "csv")
+        case 10:
+            lista_marcas = abrir_txt("data/marcas.txt")
+            new_product = crear_nuevo_producto(lista_marcas, lista)
+            lista.append(new_product)
+
+            guardar_archivo(lista)
 
     respuesta = pedir_texto("Desea hacer otra cosa? (s/n): ")
 

@@ -7,7 +7,7 @@ from utils.models import *
 def pedir_texto(placeholder: str) -> str:
     while True:
         try:
-            texto = input(placeholder).lower()
+            texto = input(placeholder)
 
             if re.match("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s_-]+$", texto):
                 return texto
@@ -129,3 +129,10 @@ def abrir_csv(path):
             lista.append(items)
 
         return crear_lista(lista, headers)
+
+
+def abrir_txt(path):
+
+    with open(path) as file:
+        lista_marcas = list(map(lambda marca: marca.replace("\n", ""), file))
+        return lista_marcas

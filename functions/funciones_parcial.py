@@ -146,10 +146,17 @@ def generar_menu(options: list):
     return choise
 
 
-def guardar_archivo(lista: list, extension: str):
+def guardar_archivo(lista: list, extension: str = ""):
 
     if len(lista) == 0:
         return
+
+    if extension == "":
+        while True:
+            extension = pedir_texto(
+                "Ingrese la extension a guardar (json, csv): ")
+            if extension == "json" or extension == "csv":
+                break
 
     file_name = pedir_texto("Ingrese el nombre del archivo: ")
 
@@ -174,3 +181,59 @@ def guardar_archivo(lista: list, extension: str):
 
             case "json":
                 json.dump(lista, file, indent=4)
+
+
+def crear_nuevo_producto(lista_marcas, lista):
+    new_product = {}
+
+    ultimo_id = int(lista[len(lista) - 1]["ID"])
+
+    new_product["ID"] = ultimo_id + 1
+
+    name = pedir_texto("Ingrese el nombre del producto: ")
+
+    new_product["NOMBRE"] = name
+
+    for marca in lista_marcas:
+        print(marca)
+
+    while True:
+
+        branch = pedir_texto("Ingrese la marca de su producto: ")
+
+        find_branch = list(filter(lambda item: item == branch, lista_marcas))
+
+        if len(find_branch) > 0:
+            break
+
+        else:
+            print("No se encotnro la marca, intente otra vez")
+
+    new_product["MARCA"] = branch
+
+    price = pedir_num("Inghrese el valor del producto: ")
+
+    new_product["PRICE"] = price
+
+    new_product["CARACTERISTICAS"] = []
+
+    while len(new_product["CARACTERISTICAS"]) < 3:
+        if len(new_product["CARACTERISTICAS"]) >= 1:
+            choose = pedir_texto(
+                "Desea ingresar otra caracteristica? (s/n)) :")
+            if choose == "s":
+                caracteristica = pedir_texto(
+                    "Ingrese la caract de su producto: ")
+                new_product["CARACTERISTICAS"].append(caracteristica)
+            else:
+                break
+        else:
+
+            caracteristica = pedir_texto("Ingrese la caract de su producto: ")
+
+            new_product["CARACTERISTICAS"].append(caracteristica)
+
+    caracterisiticas = "|!*|".join(new_product["CARACTERISTICAS"])
+    new_product["CARACTERISTICAS"] = caracterisiticas
+
+    return new_product
