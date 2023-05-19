@@ -351,9 +351,9 @@
     },
     {
         "ID": 51,
-        "NOMBRE": "Placa madre",
+        "NOMBRE": "Tele nueva",
         "MARCA": "Intel",
-        "PRICE": 300,
-        "CARACTERISTICAS": "varios puertos|!*|es pesada"
+        "PRICE": 500,
+        "CARACTERISTICAS": "marca nueva"
     }
 ]

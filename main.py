@@ -85,12 +85,13 @@ while True:
             guardar_archivo(lista_precios_actualizados, "csv")
         case 10:
             lista_marcas = abrir_txt("data/marcas.txt")
-            new_product = crear_nuevo_producto(lista_marcas, lista)
-            lista.append(new_product)
+            lista_productos = crear_nuevo_producto(lista_marcas, lista)
+            for product in lista_productos:
+                lista.append(product)
 
             guardar_archivo(lista)
 
-    respuesta = pedir_texto("Desea hacer otra cosa? (s/n): ")
+    respuesta = pedir_texto("Desea agregar otro producto ? (s/n): ")
 
     if (respuesta == "n"):
         break
