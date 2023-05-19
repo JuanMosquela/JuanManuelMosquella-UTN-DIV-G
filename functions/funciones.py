@@ -82,8 +82,10 @@ def double_sort(lista: list, key: str, secondary_key: str, asc: bool = True) -> 
     size = len(lista)
     for i in range(size - 1):
         for j in range(i + 1, size):
-            if lista[i][key] > lista[j][key] or (lista[i][key] == lista[j][key] and lista[i][secondary_key] > lista[j][secondary_key]):
-                lista[i], lista[j] = lista[j], lista[i]
+            if lista[i][key] > lista[j][key] or (lista[i][key] == lista[j][key] and lista[i][secondary_key] < lista[j][secondary_key]):
+                aux = lista[i]
+                lista[i] = lista[j]
+                lista[j] = aux
 
     return lista
 
